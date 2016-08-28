@@ -1,0 +1,51 @@
+﻿<Window x:Class="FlightStatusEntry.MainWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                xmlns:local="clr-namespace:FlightStatusEntry"
+                Title="Entry Flight Status" Height="676" Width="802" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
+        <Grid>
+        <Label Content="Entry Flight Status" Height="48" HorizontalAlignment="Left" Margin="276,13,0,0" Name="lblFlightStatus" VerticalAlignment="Top" FontSize="26" FontWeight="Bold" Foreground="#FF27BFD8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label Content="No. Reg Plane" Height="28" HorizontalAlignment="Left" Margin="11,119,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Plane" Height="28" HorizontalAlignment="Left" Margin="10,182,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="Base" Height="28" HorizontalAlignment="Left" Margin="10,213,0,0" Name="label3" VerticalAlignment="Top" />
+        <Label Content="Status" Height="28" HorizontalAlignment="Left" Margin="10,292,0,0" Name="label5" VerticalAlignment="Top" />
+        <Label Content="Name" HorizontalAlignment="Left" Margin="11,150,0,461" Name="label6" Width="51" />
+        <Label Content="Remark" Height="28" HorizontalAlignment="Left" Margin="451,324,0,0" Name="label7" VerticalAlignment="Top" />
+        <TextBox Height="90" HorizontalAlignment="Left" Margin="507,326,0,0" Name="txtRemark" VerticalAlignment="Top" Width="238" TextWrapping="Wrap" />
+        
+        <Button Content="Exit" Height="23" HorizontalAlignment="Left" Margin="693,583,0,0" Name="BtnExit" VerticalAlignment="Top" Width="75" Click="BtnExit_Click" />
+        <Label Content="Component" Height="28" Margin="12,360,689,0" Name="label9" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="123,150,0,0" Name="TxtName" VerticalAlignment="Top" Width="211" IsEnabled="True" IsReadOnly="False" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="123,184,0,0" Name="TxtPlane" VerticalAlignment="Top" Width="211" IsReadOnly="True" Foreground="White" IsEnabled="True" BorderBrush="#FF100101" Background="#FFD84545" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="123,119,0,0" Name="CmbRegPlane" VerticalAlignment="Top" Width="211" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="123,218,0,0" Name="CmbAirBase" VerticalAlignment="Top" Width="211" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="123,326,0,0" Name="CmbMaintenance" VerticalAlignment="Top" Width="211" SelectionChanged="CmbMaintenance_SelectionChanged" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="125,360,0,0" Name="txtItems" VerticalAlignment="Top" Width="211" KeyDown="txtItems_KeyDown" />
+        <Button Content="Add" Height="23" HorizontalAlignment="Right" Margin="0,391,367,0" Name="BtnAdd" VerticalAlignment="Top" Width="56" Click="BtnAdd_Click" />
+        <ListBox Height="137" HorizontalAlignment="Left" Margin="123,436,0,0" Name="LstItems" VerticalAlignment="Top" Width="211" SelectionMode="Extended" />
+        <Button Content="Delete" Height="23" HorizontalAlignment="Right" Margin="0,436,349,0" Name="BtnDltLst" VerticalAlignment="Top" Width="74" Click="BtnDltLst_Click" />
+        <Button Content="Delete All" Height="23" HorizontalAlignment="Right" Margin="0,477,349,0" Name="BtnDltLstAll" VerticalAlignment="Top" Width="74" Click="BtnDltLstAll_Click" />
+        <Label Content="Maintenance" Height="28" HorizontalAlignment="Left" Margin="11,326,0,0" Name="label8" VerticalAlignment="Top" />
+        <Button Content="SAVE" Height="79" HorizontalAlignment="Left" Margin="630,468,0,0" Name="BtnSave" VerticalAlignment="Top" Width="127" FontSize="36" Foreground="#FF2098E2" Background="White" Click="BtnSave_Click" />
+        <Label Content="Search No Regis :" Height="28" HorizontalAlignment="Left" Margin="10,87,0,0" Name="label10" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="123,87,0,0" Name="TxtSearch" VerticalAlignment="Top" Width="211" Background="#FF6CC7FF" Foreground="White" KeyUp="TxtSearch_KeyUp" KeyDown="TxtSearch_KeyDown" />
+        <Label Content="Coordinat" Height="28" HorizontalAlignment="Left" Margin="9,257,0,0" Name="label11" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" IsEnabled="True" IsReadOnly="False" Margin="155,257,0,0" Name="Txtlatitude" PreviewTextInput="NumberValidationTextBox" VerticalAlignment="Top" Width="131" />
+        <Label Content="Lat" Height="28" HorizontalAlignment="Left" Margin="123,257,0,0" Name="label12" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" IsEnabled="True" IsReadOnly="False" Margin="340,257,0,0" Name="TxtLongitude" PreviewTextInput="NumberValidationTextBox" VerticalAlignment="Top" Width="131" />
+        <Label Content="Long" Height="28" HorizontalAlignment="Left" Margin="299,257,0,0" Name="label13" VerticalAlignment="Top" />
+        <RadioButton Content="Good" Height="26" HorizontalAlignment="Left" Margin="123,294,0,0" Name="rdGood" VerticalAlignment="Top" Background="#FF21FF21" />
+        <RadioButton Background="#FFFFFF21" Content="Middle Risk" Height="26" HorizontalAlignment="Left" Margin="199,294,0,0" Name="rdMiddle" VerticalAlignment="Top" />
+        <RadioButton Background="#FFFF3121" Content="High Risk" Height="26" HorizontalAlignment="Left" Margin="311,294,0,0" Name="rdHigh" VerticalAlignment="Top" />
+        <DatePicker Height="38" HorizontalAlignment="Left" Margin="125,392,0,0" Name="dtDueDate" VerticalAlignment="Top" Width="209" />
+        <Label Content="Time Since New" Height="28" HorizontalAlignment="Left" Margin="377,85,0,0" Name="label4" VerticalAlignment="Top" />
+        <Label Content="Cycle Since New" Height="28" HorizontalAlignment="Left" Margin="377,121,0,0" Name="label14" VerticalAlignment="Top" />
+        <Label Content="Manufactured Serial Number" Height="28" HorizontalAlignment="Left" Margin="377,155,0,0" Name="label15" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" IsEnabled="True" IsReadOnly="False" Margin="546,155,0,0" Name="txtSerialNumber" VerticalAlignment="Top" Width="211" />
+        <Button Content="Save Maintenance" Height="23" HorizontalAlignment="Right" Margin="0,521,297,0" Name="btnSaveMaintenance" VerticalAlignment="Top" Width="126" Click="btnSaveMaintenance_Click" />
+        <Label Content="Due Date" Height="28" Margin="12,392,689,0" Name="label16" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" IsEnabled="True" IsReadOnly="False" Margin="546,121,0,0" Name="dTCycleSinceNew" VerticalAlignment="Top" Width="211" />
+        <TextBox Height="23" HorizontalAlignment="Left" IsEnabled="True" IsReadOnly="False" Margin="546,89,0,0" Name="dTTimeSinceNew" VerticalAlignment="Top" Width="211" />
+    </Grid>
+</Window>

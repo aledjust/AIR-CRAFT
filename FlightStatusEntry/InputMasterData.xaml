@@ -1,0 +1,32 @@
+﻿<Window x:Class="FlightStatusEntry.InputMasterData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="InputMasterData" Height="457" Width="697" WindowStartupLocation="CenterScreen">
+    <Grid Height="381">
+        <Rectangle Height="159" HorizontalAlignment="Left" Margin="12,23,0,0" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="297" />
+        <Label Content="Input MsRegPlane" Height="28" HorizontalAlignment="Left" Margin="20,23,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="RegCode" Height="28" HorizontalAlignment="Left" Margin="20,57,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="Description" Height="28" HorizontalAlignment="Left" Margin="20,91,0,0" Name="label3" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="97,59,0,0" Name="TxtMsRegCode" VerticalAlignment="Top" Width="169" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="97,93,0,0" Name="TxtMsRegDesc" VerticalAlignment="Top" Width="169" />
+        <Button Content="ADD" Height="23" HorizontalAlignment="Left" Margin="97,135,0,0" Name="BtnAddRegPlane" VerticalAlignment="Top" Width="75" Click="BtnAddRegPlane_Click" />
+        <Rectangle Height="159" HorizontalAlignment="Left" Margin="341,23,0,0" Name="rectangle2" Stroke="Black" VerticalAlignment="Top" Width="297" />
+        <Label Content="Input MsSystem" Height="28" HorizontalAlignment="Left" Margin="349,23,0,0" Name="label4" VerticalAlignment="Top" />
+        <Label Content="System Code" Height="28" HorizontalAlignment="Left" Margin="349,57,0,0" Name="label5" VerticalAlignment="Top" />
+        <Label Content="Description" Height="28" HorizontalAlignment="Left" Margin="349,91,0,0" Name="label6" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="429,59,0,0" Name="TxtSystemCode" VerticalAlignment="Top" Width="169" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="429,93,0,0" Name="TxtSystemDesc" VerticalAlignment="Top" Width="169" />
+        <Button Content="ADD" Height="23" HorizontalAlignment="Left" Margin="426,135,0,0" Name="BtnAddSystem" VerticalAlignment="Top" Width="75" Click="BtnAddSystem_Click" />
+        <Rectangle Height="159" HorizontalAlignment="Left" Margin="12,210,0,0" Name="rectangle3" Stroke="Black" VerticalAlignment="Top" Width="626" />
+        <Label Content="Input MsAirBase" Height="28" HorizontalAlignment="Left" Margin="20,210,0,0" Name="label7" VerticalAlignment="Top" />
+        <Label Content="AirBaseId" Height="28" HorizontalAlignment="Left" Margin="20,244,0,0" Name="label8" VerticalAlignment="Top" />
+        <Label Content="BaseName" Height="28" HorizontalAlignment="Left" Margin="20,278,0,0" Name="label9" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="97,246,0,0" Name="txtAirBaseId" VerticalAlignment="Top" Width="169" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="97,280,0,0" Name="txtBaseName" VerticalAlignment="Top" Width="169" />
+        <Button Content="ADD" Height="23" HorizontalAlignment="Left" Margin="97,322,0,0" Name="BtnAddBase" VerticalAlignment="Top" Width="75" Click="BtnAddBase_Click" />
+        <Label Content="Latitude" Height="28" HorizontalAlignment="Left" Margin="305,244,0,0" Name="label10" VerticalAlignment="Top" />
+        <Label Content="Longitude" Height="28" HorizontalAlignment="Left" Margin="305,278,0,0" Name="label11" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="382,246,0,0" Name="txtLatitude" PreviewTextInput="NumberValidationTextBox" VerticalAlignment="Top" Width="169" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="382,280,0,0" Name="txtLongitude" PreviewTextInput="NumberValidationTextBox" VerticalAlignment="Top" Width="169" />
+    </Grid>
+</Window>

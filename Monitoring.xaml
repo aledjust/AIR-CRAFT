@@ -1,0 +1,361 @@
+﻿<UserControl x:Class="AirCraft.Monitoring"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:chart="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Chart"
+             xmlns:chartView="clr-namespace:Telerik.Windows.Controls.ChartView;assembly=Telerik.Windows.Controls.Chart"
+             xmlns:local="clr-namespace:AirCraft"
+             xmlns:System="clr-namespace:System;assembly=mscorlib">
+    <UserControl.DataContext>
+        <local:MonitoringViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+
+        <Style x:Key="H1" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ValueTextT" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontWeight" Value="ExtraBlack" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ValueTextD" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontWeight" Value="ExtraBlack" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ValueTextS" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontWeight" Value="ExtraBlack" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="H1Wrapper" TargetType="Border">
+            <Setter Property="Background" Value="#FFE2E6E7" />
+            <Setter Property="Margin" Value="0,0,0,5" />
+            <Setter Property="Padding" Value="5,3" />
+        </Style>
+
+        <Style x:Key="CustomButton" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#FF000000"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="BorderThickness" Value="1,1,0,1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource StrongBrush}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="Background" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.6*" />
+            <RowDefinition Height="0.4*" />
+        </Grid.RowDefinitions>
+
+        <telerik:RadMap Grid.Row="0"
+                        Name="radMap" 
+                        BorderBrush="#FFD6D4D7"
+                        BorderThickness="1"
+                        UseDefaultLayout="False" 
+				        UseSpringAnimations="True"
+				        MouseClickMode="None"
+                        ZoomLevel="5"
+                        Center="-2.587403,117.5304285"
+				        MapMouseClick="RadMapMapMouseClick">
+            <telerik:RadMap.Providers>
+                <telerik:BingMapTrafficProvider />
+            </telerik:RadMap.Providers>
+            <telerik:RadMap.Resources>
+                <DataTemplate x:Key="PlaneRegisTemplate">
+                    <Image x:Name="planeImage"
+                                Width="30"
+                                Height="30" Source="{Binding ImgPlane}"  Stretch="Fill" 
+                           MouseLeftButtonDown="ElementMouseLeftButtonDown" telerik:MapLayer.Location="{Binding Center}" OpacityMask="#FFE66767" >
+                        <ToolTipService.ToolTip>
+                            <StackPanel>
+                                <TextBlock Text="{Binding RegisName}" />
+                            </StackPanel>
+                        </ToolTipService.ToolTip>
+                    </Image>
+                </DataTemplate>
+            </telerik:RadMap.Resources>
+            <telerik:VisualizationLayer ItemsSource="{Binding PlaneRegis}" ItemTemplate="{StaticResource PlaneRegisTemplate}" />
+        </telerik:RadMap>
+
+        <!-- Row Second -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="2.5*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontFamily" Value="Segoe UI Light" />
+                            <Setter Property="FontSize" Value="15" />
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Grid.Column="0" Margin="0,5,0,0" Style="{StaticResource H1Wrapper}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="0" Grid.Column="0">
+                                <TextBlock Style="{StaticResource H1}" Text="Air Craft Monitoring System" />
+                            </Grid>
+                            <Grid Grid.Row="0" Grid.Column="1">
+                                <Button x:Name="BtnRefresh" Click="BtnRefresh_Click">
+                                    <TextBlock><Bold>REFRESH</Bold></TextBlock>
+                                </Button>
+                            </Grid>
+                        </Grid>                        
+                    </Border>
+
+                    <Grid Grid.Row="1" Margin="5,0,0,10" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="0.8*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="0.8*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Good" />
+                            <TextBlock x:Name="TotalFlightGood"  Foreground="Green" FontSize="30" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Orientation="Vertical">
+                            <TextBlock Text="Middle Risk" />
+                            <TextBlock x:Name="TotalFlightMiddleRisk"  Foreground="Yellow" FontSize="30" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="4" Orientation="Vertical">
+                            <TextBlock Text="High Risk" />
+                            <TextBlock x:Name="TotalFlightHighRisk"  Foreground="Red" FontSize="30" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock Style="{StaticResource H1}" Text="Flight information" />
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="1">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock  Style="{StaticResource H1}"  Text="Search No Regis :" />
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="2">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBox Height="26" HorizontalAlignment="Left"  Name="TxtSearchFlight" VerticalAlignment="Top" Width="156" KeyUp="TxtSearch_KeyUp" KeyDown="TxtSearchFlight_KeyDown" />
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock Style="{StaticResource ValueTextT}" Text="Name" />
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="0">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock Style="{StaticResource ValueTextT}" Text="Plane" />
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="0">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock Style="{StaticResource ValueTextT}" Text="Base" />
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="3" Grid.Column="0">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock Style="{StaticResource ValueTextT}" Text="No. Reg Plane" />
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="4" Grid.Column="0">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock Style="{StaticResource ValueTextT}" Text="Status"  />
+                            </Border>
+                        </Grid>
+
+                        <!--Column 2-->
+                        <Grid Grid.Row="0" Grid.Column="1">
+                            <TextBlock Style="{StaticResource ValueTextD}"  Margin="5,2,2,2" x:Name="LblName" />
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="1">
+                            <TextBlock Style="{StaticResource ValueTextD}" Margin="5,2,2,2" x:Name="LblPlane" />
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="1">
+                            <TextBlock Style="{StaticResource ValueTextD}"  Margin="5,2,2,2" x:Name="LblBase"/>
+                        </Grid>
+                        <Grid Grid.Row="3" Grid.Column="1">
+                            <TextBlock Style="{StaticResource ValueTextD}"  Margin="5,2,2,2" x:Name="LblRegisName" />
+                        </Grid>
+                        <Grid Grid.Row="4" Grid.Column="1">
+                            <TextBlock Style="{StaticResource ValueTextD}" Margin="5,2,2,2" x:Name="LblStatus" />
+                        </Grid>
+
+                        <!--Column 3 -->
+                        <Grid Grid.Row="0" Grid.Column="2">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock Style="{StaticResource ValueTextT}" Text="Time Since New" />
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="2">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock Style="{StaticResource ValueTextT}" Text="Cycle Since New" />
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="2">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock Style="{StaticResource ValueTextT}" Text="Manufactured Serial Number" />
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="3" Grid.Column="2">
+                            <Border Style="{StaticResource H1Wrapper}">
+                                <TextBlock Style="{StaticResource ValueTextT}" Text="Remark" />
+                            </Border>
+                        </Grid>
+
+                        <!--Column 4-->
+                        <Grid Grid.Row="0" Grid.Column="3">
+                            <TextBlock Style="{StaticResource ValueTextD}"  Margin="5,2,2,2" x:Name="LblSinceNew" />
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="3">
+                            <TextBlock Style="{StaticResource ValueTextD}"  Margin="5,2,2,2" x:Name="LblCycleSinceNew" />
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="3">
+                            <TextBlock Style="{StaticResource ValueTextD}"  Margin="5,2,2,2" x:Name="LblSN" />
+                        </Grid>
+                        <Grid Grid.Row="3" Grid.Column="3" Grid.RowSpan="2">
+                            <TextBox Style="{StaticResource ValueTextS}" x:Name="LblRemark"   VerticalAlignment="Top" Width="220" MaxHeight="50" Margin="5,2,2,2"  IsEnabled="False" TextWrapping="Wrap"   />
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="2">
+                <telerik:RadGridView  Margin="5,5,0,5"
+                                 x:Name="gridView"
+                                 AutoExpandGroups="False" 
+                                 AutoGenerateColumns="False"
+                                 IsReadOnly="True"
+                                 IsFilteringAllowed="True"
+                                 RowIndicatorVisibility="Collapsed"
+                                 ShowGroupPanel="False" 
+                                 EnableRowVirtualization="False"                      
+                                 EnableColumnVirtualization="False"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                 GroupRowStyle="{StaticResource GridViewGroupRowStyle}"                                                            
+                                 GroupRenderMode="Flat"
+                                 FilteringMode="FilterRow"
+							 FilterOperatorsLoading="RadGridView_FilterOperatorsLoading"
+							 FieldFilterEditorCreated="RadGridView_FieldFilterEditorCreated"
+                                 CanUserFreezeColumns="False"  
+                                 VerticalAlignment="Top"
+                                 BorderThickness="1,1,1,0"
+                                 DataLoaded="GridViewDataLoaded">
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn Header="Maintenance" 
+                                                DataMemberBinding="{Binding Maintenances}" 
+                                                Width="100" 
+                                                IsResizable="False"
+                                                IsGroupable="False"/>
+                        <telerik:GridViewDataColumn Header="Component"
+                                                DataMemberBinding="{Binding Components}"
+                                                Width="*"
+                                                TextAlignment="Right"
+                                                GroupFooterCellStyle="{StaticResource GridViewGroupFooterCellStyle}"
+                                                HeaderCellStyle="{StaticResource GridViewHeaderCellStyleStyle}"
+                                                IsResizable="False"
+                                               IsFilterable="True"
+                                                IsReorderable="False">
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="Due Date" 
+                                                DataMemberBinding="{Binding DueDate}"
+                                                Width="*"
+                                                TextAlignment="Right"
+                                                GroupFooterCellStyle="{StaticResource GridViewGroupFooterCellStyle}"
+                                                HeaderCellStyle="{StaticResource GridViewHeaderCellStyleStyle}"
+                                                IsResizable="False"
+                                                IsReorderable="False">
+                        </telerik:GridViewDataColumn>
+                    </telerik:RadGridView.Columns>
+
+                    <telerik:RadGridView.GroupDescriptors>
+                        <telerik:GroupDescriptor Member="Maintenances" />
+                    </telerik:RadGridView.GroupDescriptors>
+                </telerik:RadGridView>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>

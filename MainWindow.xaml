@@ -1,0 +1,9 @@
+﻿<Window x:Class="AirCraft.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:AirCraft"
+        Title="Air Craft Monitoring" WindowState="Maximized" Icon="/AirCraft;component/airplanegreen.png" SizeToContent="Manual" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <local:Monitoring />
+    </Grid>
+</Window>

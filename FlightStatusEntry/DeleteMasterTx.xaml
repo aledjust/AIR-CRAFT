@@ -1,0 +1,22 @@
+﻿<Window x:Class="FlightStatusEntry.DeleteMasterTx"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DeleteMasterTx" Height="248" Width="567" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Rectangle Height="81" HorizontalAlignment="Left" Margin="10,10,0,0" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="144" />
+        <Label Content="Delete MsRegPlane" Height="28" HorizontalAlignment="Left" Margin="18,10,0,0" Name="label1" VerticalAlignment="Top" />
+        <Button Content="DELETE" Height="23" HorizontalAlignment="Left" Margin="27,46,0,0" Name="BtnAddRegPlane" VerticalAlignment="Top" Width="75" Click="BtnAddRegPlane_Click" />
+        <Rectangle Height="83" HorizontalAlignment="Left" Margin="194,8,0,0" Name="rectangle2" Stroke="Black" VerticalAlignment="Top" Width="150" />
+        <Label Content="Delete MsSystem" Height="28" HorizontalAlignment="Left" Margin="202,8,0,0" Name="label4" VerticalAlignment="Top" />
+        <Button Content="DELETE" Height="23" HorizontalAlignment="Left" Margin="222,46,0,0" Name="BtnAddSystem" VerticalAlignment="Top" Width="75" Click="BtnAddSystem_Click" />
+        <Rectangle Height="81" HorizontalAlignment="Left" Margin="10,111,0,0" Name="rectangle3" Stroke="Black" VerticalAlignment="Top" Width="144" />
+        <Label Content="Delete TxAirCrat" Height="28" HorizontalAlignment="Left" Margin="18,111,0,0" Name="label2" VerticalAlignment="Top" />
+        <Button Content="DELETE" Height="23" HorizontalAlignment="Left" Margin="27,147,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+        <Rectangle Height="83" HorizontalAlignment="Left" Margin="194,109,0,0" Name="rectangle4" Stroke="Black" VerticalAlignment="Top" Width="150" />
+        <Label Content="Delete TxAirCratItem" Height="28" HorizontalAlignment="Left" Margin="202,109,0,0" Name="label3" VerticalAlignment="Top" />
+        <Button Content="DELETE" Height="23" HorizontalAlignment="Left" Margin="222,147,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="button2_Click" />
+        <Rectangle Height="83" HorizontalAlignment="Left" Margin="381,8,0,0" Name="rectangle5" Stroke="Black" VerticalAlignment="Top" Width="150" />
+        <Label Content="Delete MsAirBase" Height="28" HorizontalAlignment="Left" Margin="389,8,0,0" Name="label5" VerticalAlignment="Top" />
+        <Button Content="DELETE" Height="23" HorizontalAlignment="Left" Margin="409,46,0,0" Name="button3" VerticalAlignment="Top" Width="75" Click="button3_Click" />
+    </Grid>
+</Window>
