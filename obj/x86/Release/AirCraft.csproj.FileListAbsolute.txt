@@ -48,3 +48,6 @@ E:\AirCraftSystem\obj\x86\Release\AirCraft.csproj.GenerateResource.Cache
 E:\AirCraftSystem\obj\x86\Release\AirCraft.exe.licenses
 E:\AirCraftSystem\obj\x86\Release\AirCraft.exe
 E:\AirCraftSystem\obj\x86\Release\AirCraft.pdb
+D:\OWN\AIR-CRAFT\bin\Release\AirCraft.exe.config
+D:\OWN\AIR-CRAFT\obj\x86\Release\AirCraft.exe
+D:\OWN\AIR-CRAFT\obj\x86\Release\AirCraft.pdb

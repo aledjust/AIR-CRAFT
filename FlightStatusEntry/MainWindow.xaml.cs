@@ -15,7 +15,7 @@ namespace FlightStatusEntry
     public partial class MainWindow : Window
     {
         #region Member Variable(s)
-        private readonly string namePlane = "BOING 737-800 NG";
+        private readonly string namePlane = "Boeing 737-800 NG";
         private DataTable txAirCraft = null;
         private string generateRowId = string.Empty;
         private readonly string separators = "|";
